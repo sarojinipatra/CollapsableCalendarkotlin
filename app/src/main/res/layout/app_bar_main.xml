@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+                                                 xmlns:app2="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 xmlns:app="http://schemas.android.com/apk/com.kotlin.collapsablecalendar"
+                                                 tools:context=".MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app2:expanded="false"
+        app:layout_behavior="com.kotlin.collapsablecalendar.ScrollingCalendarBehavior">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:minHeight="?attr/actionBarSize"
+            app2:contentScrim="?attr/colorPrimary"
+            app2:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app2:statusBarScrim="?attr/colorPrimaryDark">
+
+            <LinearLayout
+                android:id="@+id/compactcalendar_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:paddingTop="?attr/actionBarSize"
+                app2:layout_collapseMode="parallax"
+                app2:layout_collapseParallaxMultiplier="1.0">
+
+                <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                    android:id="@+id/compactcalendar_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    app2:compactCalendarBackgroundColor="?attr/colorPrimary"
+                    app2:compactCalendarCurrentDayBackgroundColor="#FFC107"
+                    app2:compactCalendarCurrentSelectedDayBackgroundColor="#BBDEFB"
+                    app2:compactCalendarTextColor="#fff"
+                    app2:compactCalendarTextSize="12sp" />
+            </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/ToolbarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app2:layout_collapseMode="pin"
+                app2:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <RelativeLayout
+                    android:id="@+id/date_picker_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?android:selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    android:focusable="true">
+
+                    <View
+                        android:id="@+id/centerInParent"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:id="@+id/toolbarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/centerInParent"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/date_picker_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/centerInParent"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+                        android:textColor="@android:color/white" />
+
+                    <ImageView
+                            android:id="@+id/date_picker_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/date_picker_text_view"
+                            android:layout_toRightOf="@id/date_picker_text_view"
+                            tools:ignore="ContentDescription,RtlHardcoded"
+                            app2:srcCompat="@drawable/ic_arrow_drop_down"/>
+
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main" />
+
+</android.support.design.widget.CoordinatorLayout>
